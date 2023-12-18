@@ -8,6 +8,9 @@ import cors from 'cors';
 import router from './router';
 import mongoose from 'mongoose';
 
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
 
 app.use(cors({
@@ -24,7 +27,7 @@ server.listen(8080, () => {
   console.log('Server running on http://localhost:8080/');
 });
 
-const MONGO_URL = ''; // DB URI
+const MONGO_URL = process.env.MONGO_URI;
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
